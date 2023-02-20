@@ -15,7 +15,7 @@ Created a rollbar account
 
 Created my AWS account:
 Setting up the MFA in IAM for the root user
-![Setting up the MFA in IAM dashboard](aws-bootcamp-cruddur-2023/_docs/assets/week0/Setting up the MFA in IAM dashboard.JPG?raw=true "Setting up the MFA in IAM dashboard")
+![image](../_docs/assets/week0/Setting up the MFA in IAM dashboard.JPG)
 
 Destroy your root account credentials, Set MFA, IAM role
 
