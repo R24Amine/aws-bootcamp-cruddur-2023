@@ -28,7 +28,7 @@ Step 1 : from console search for billing to show the dashboard, not all the serv
 Step 2 : manage billing alert using cloudwatch, then create an alarm (billing —> total estimated charges —> metric name : AWS Bootcamp Cruddur 2023 Alert and set budget 10$ —> create a new sns topic from notification section —> Alarm name : Billing Alarm (now I amm left with 9 alarms (10 free amazon cloudwatch alarms in total)).
 ![](../_docs/assets/week0/Mybillingalarms.png)
 #### AWS Budget :
-Created from Budget a monthly cost budget gave it a name, and my email and then chose the budget amount 10$ (oui je suis ruiné :) ) 
+Created from Budget a monthly cost budget gave it a name, and my email and then chose the budget amount 10$.
 ![](../_docs/assets/week0/MyAWSBootcampCruddur2023Budget.png)
 #### Cost allocation tags : 
 not yet maybe I'll use it later when I create for example a dev and a prod environment for EC2 instance
@@ -51,17 +51,116 @@ Got familiarized with Cloudshell from my console and it works fine
 ![](../_docs/assets/week0/Cloudshellconsole.png)
 
 ### 2nd method from the Gitpod environment:
+#### install AWS CLI
 At first we need to install the AWS CLI on gitpod so we can find it in Vscode when we lanuch our workspace.
 Commands on linux
+```
 curl "[https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)" -o "awscliv2.zip"
-
+```
+```
 unzip awscliv2.zip
+```
 
 this will download a bash script in install file ./aws/install
 then we need to run this program :
-
+```
 sudo ./aws/install
+```
+
 ![](../_docs/assets/week0/InstallAWSCLIonvscode.png)
+
+after that run /usr/local/bin/aws 
+
+![](../_docs/assets/week0/addingenvvarsfortheAWSCLI.png)
+
+in order to make it persistent for gitpod each time we reuse it replace export with gp env, then add the gitpod.yml new configuration :
+```YAML
+tasks:
+  - name: aws-cli
+    env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+    init: |
+      cd /workspace
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      cd $THEIA_WORKSPACE_ROOT
+vscode:
+  extensions:
+    - 42Crunch.vscode-openapi
+```
+finally commit and push the changes and go check on repo and gitpod.io that it’s running (sometimes gitpod don’t save changements if it's not running)
+#### Setup a Budget and Billing alarm via CLI
+To do that at first we create aws/json and then add this two configuration files found on the link bellow :
+[AWS template link to set a budget and a billing alarm](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/budgets/create-budget.html#examples)
+
+aws-budget.json 
+```YAML
+{
+    "BudgetLimit": {
+        "Amount": "10",
+        "Unit": "USD"
+    },
+    "BudgetName": "Example Tag Budget",
+    "BudgetType": "COST",
+    "CostFilters": {
+        "TagKeyValue": [
+            "user:Key$value1",
+            "user:Key$value2"
+        ]
+    },
+    "CostTypes": {
+        "IncludeCredit": true,
+        "IncludeDiscount": true,
+        "IncludeOtherSubscription": true,
+        "IncludeRecurring": true,
+        "IncludeRefund": true,
+        "IncludeSubscription": true,
+        "IncludeSupport": true,
+        "IncludeTax": true,
+        "IncludeUpfront": true,
+        "UseBlended": false
+    },
+    "TimePeriod": {
+        "Start": 1477958399,
+        "End": 3706473600
+    },
+    "TimeUnit": "MONTHLY"
+}
+```
+aws-notifications-with-subscribers.json 
+```
+[
+    {
+        "Notification": {
+            "ComparisonOperator": "GREATER_THAN",
+            "NotificationType": "ACTUAL",
+            "Threshold": 80,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "Address": "put your email here",
+                "SubscriptionType": "EMAIL"
+            }
+        ]
+    }
+]
+```
+Finally run this in the main of the repo :
+
+```
+aws budgets create-budget \
+--account-id $ACCOUNT_ID \
+--budget file://aws/json/aws-budget.json \
+--notifications-with-subscribers file://aws/json/aws-budget-notifications-with-subscribers.json
+```
+PS: we can also add an env var : gp env 
+
+
+
+
+
 
 
 
