@@ -150,20 +150,27 @@ aws-notifications-with-subscribers.json
 Finally run this in the main of the repo :
 
 ```
+ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+```
+```
 aws budgets create-budget \
 --account-id $ACCOUNT_ID \
 --budget file://aws/json/aws-budget.json \
 --notifications-with-subscribers file://aws/json/aws-budget-notifications-with-subscribers.json
 ```
-PS: we can also add an env var : gp env 
+PS: we can also add an env var : gp env AWS_ACCOUNT_ID="my-id-:p"
 ### creating SNS topic and SNS subscription :
-I created SNS topic and subscription in order to receive alarms when we exceed the budget, we can do it from the Console or the AWS CLI
+I created SNS topic and subscription in order to receive alarms when we exceed the budget, we can do it from the Console or the AWS CLI.
+
 SNS topic :
 ![](../_docs/assets/week0/snstopic.png)
+
 SNS subscription :
 ![](../_docs/assets/week0/snssubscriptions.png)
-email confimration :
+
 ![](../_docs/assets/week0/snsemail.png)
+
+
 
 
 
