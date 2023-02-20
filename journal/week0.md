@@ -160,7 +160,7 @@ aws budgets create-budget \
 ```
 PS: we can also add an env var : gp env AWS_ACCOUNT_ID="my-id-:p"
 Finally I have created 2 budgets so I don't have free remaining budgets (Beyond free tier each budget will cost 3.10USD per month)
-### creating SNS topic and SNS subscription :
+### Creating SNS topic and SNS subscription :
 I created SNS topic and subscription in order to receive alarms when we exceed the budget, we can do it from the Console or the AWS CLI.
 
 SNS topic :
@@ -170,6 +170,20 @@ SNS subscription :
 ![](../_docs/assets/week0/snssubscriptions.png)
 
 ![](../_docs/assets/week0/snsemail.png)
+
+If you want to create it from the AWS CLI :
+```
+aws sns create-topic --name billing-alarm
+```
+It will create a topic ARN (Amazon Resource Names)
+
+for the sns subscription 
+```
+aws sns subscribe \
+    --topic-arn="TopicARN" \
+    --protocol=email \
+    --notification-endpoint=putmyemail@mail.com
+```
 
 
 
