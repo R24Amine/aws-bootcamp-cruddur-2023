@@ -156,8 +156,14 @@ aws budgets create-budget \
 --notifications-with-subscribers file://aws/json/aws-budget-notifications-with-subscribers.json
 ```
 PS: we can also add an env var : gp env 
-
-
+### creating SNS topic and SNS subscription :
+I created SNS topic and subscription in order to receive alarms when we exceed the budget, we can do it from the Console or the AWS CLI
+SNS topic :
+![](../_docs/assets/week0/snstopic.png)
+SNS subscription :
+![](../_docs/assets/week0/snssubscriptions.png)
+email confimration :
+![](../_docs/assets/week0/snsemail.png)
 
 
 
