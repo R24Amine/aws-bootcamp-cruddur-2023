@@ -184,7 +184,7 @@ aws sns subscribe \
     --protocol=email \
     --notification-endpoint=putmyemail@mail.com
 ```
-
+![](../_docs/assets/week0/architecture.png)
 
 
 
