@@ -185,7 +185,7 @@ aws sns subscribe \
     --notification-endpoint=putmyemail@mail.com
 ```
 ## Conceptual Diagram
-Created the logical Diagram that contains technical stuff to communicate broad strokes to engineers, I used Lucid charts because it contains a better libraries for AWS services SVGs, [here](https://lucid.app/lucidchart/add7b3da-1657-49e5-9c8d-8f48c9c4a81a/edit?viewport_loc=-461%2C227%2C2994%2C1465%2C0_0&invitationId=inv_7b0008fa-f2e5-4da5-a677-3d3bf9dedbcb) is the link.
+Created the logical Diagram that contains technical stuff to communicate broad strokes to engineers, I used Lucid charts because it contains a better libraries for AWS services SVGs, you can open the link [here ](https://lucid.app/lucidchart/add7b3da-1657-49e5-9c8d-8f48c9c4a81a/edit?viewport_loc=-461%2C227%2C2994%2C1465%2C0_0&invitationId=inv_7b0008fa-f2e5-4da5-a677-3d3bf9dedbcb).
 
 ![](../_docs/assets/week0/architecture.png)
 
