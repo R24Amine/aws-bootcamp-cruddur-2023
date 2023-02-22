@@ -42,12 +42,19 @@ In case I get a voucher
 We are doing this to ensure security so it is highly recommended (to not troubleshoot access to some things).
 Created a user group, added an admin user to that group after changing the alias, and changing the password (after login as IAM user).
 ![](../_docs/assets/week0/Credantialscreateusergroup.png)
+
 ![](../_docs/assets/week0/Myuser.png)
+
 Then created access keys for my user
+
 ![](../_docs/assets/week0/Generateaccesskeysforuser.png)
+
 Finally I added MFA for more security for the admin user
+
 ![](../_docs/assets/week0/MyuserwithMFA.png)
+
 Got familiarized with Cloudshell from my console and it works fine
+
 ![](../_docs/assets/week0/Cloudshellconsole.png)
 
 ### 2nd method from the Gitpod environment:
@@ -184,7 +191,15 @@ aws sns subscribe \
     --protocol=email \
     --notification-endpoint=putmyemail@mail.com
 ```
+## Napkin Diagram
+
+![](../_docs/assets/week0/napkindiagram.png)
+
 ## Conceptual Diagram
+Created the conceptual Diagram, used to communicate at a high level the architecture to key stakeholders, I used lucid charts, you can open the link [here ](https://lucid.app/lucidchart/7aa3c89c-4e57-4220-819b-09af079f9f13/edit?viewport_loc=86%2C66%2C1993%2C821%2C0_0&invitationId=inv_962ceb04-afe5-40ca-867c-0bee9ecb24e4).
+
+![](../_docs/assets/week0/conceptual%20diagram.png)
+## Logical Diagram
 Created the logical Diagram that contains technical stuff to communicate broad strokes to engineers, I used Lucid charts because it contains a better libraries for AWS services SVGs, you can open the link [here ](https://lucid.app/lucidchart/add7b3da-1657-49e5-9c8d-8f48c9c4a81a/edit?viewport_loc=-461%2C227%2C2994%2C1465%2C0_0&invitationId=inv_7b0008fa-f2e5-4da5-a677-3d3bf9dedbcb).
 
 ![](../_docs/assets/week0/architecture.png)
