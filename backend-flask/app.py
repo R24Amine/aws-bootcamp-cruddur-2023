@@ -28,9 +28,9 @@ from services.show_activity import *
 #tracer = trace.get_tracer(__name__)
 
 # Initialize automatic instrumentation with Flask
-app = Flask(__name__)
-FlaskInstrumentor().instrument_app(app)
-RequestsInstrumentor().instrument()
+#app = Flask(__name__)
+#FlaskInstrumentor().instrument_app(app)
+#RequestsInstrumentor().instrument()
 
 ######original code
 app = Flask(__name__)
