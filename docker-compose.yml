@@ -25,6 +25,7 @@ services:
   dynamodb-local:
     # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
     # We needed to add user:root to get this working.
+    # reference : https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
     user: root
     command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
     image: "amazon/dynamodb-local:latest"
@@ -48,6 +49,7 @@ networks:
   internal-network:
     driver: bridge
     name: cruddur
+#store database locally on this machine
 volumes:
   db:
     driver: local
