@@ -238,11 +238,21 @@ docker compose up
 ```
 ## Adding a notification feature
 done
+![](../_docs/assets/week1/1.png)
+![](../_docs/assets/week1/2.png)
+![](../_docs/assets/week1/addnotificationfrontend.png)
+
 ## OpenApi notifications
 done
+![](../_docs/assets/week1/endpoint.png)
+![](../_docs/assets/week1/fixnotificationfrontend.png)
 ## Install Postgres on Gitpod
 done
+![](../_docs/assets/week1/connecttopostgres.png)
 ## Containerize the DynamoDb local
 done
+
 ## Containerize the PostgreSQL
 done
+![](../_docs/assets/week1/errorpostgresconnection.png)
+![](../_docs/assets/week1/postgreserrorfixed.png)
