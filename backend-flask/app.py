@@ -14,7 +14,7 @@ from services.messages import *
 from services.create_message import *
 from services.show_activity import *
 
-# Honeycomb -------------------------------------------------------------------------------------------
+# Honeycomb.io -------------------------------------------------------------------------------------------
 from opentelemetry import trace
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
@@ -40,7 +40,6 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 # Honeycomb ---------------------------------------------------------------------------------------------
 ######original code
-app = Flask(__name__)
 frontend = os.getenv('FRONTEND_URL')
 backend = os.getenv('BACKEND_URL')
 origins = [frontend, backend]
