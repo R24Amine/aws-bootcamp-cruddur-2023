@@ -1,8 +1,9 @@
 flask
 flask-cors
-#######
+# python dependeciens for OTEL (Open Telemety)
 opentelemetry-api 
 opentelemetry-sdk 
 opentelemetry-exporter-otlp-proto-http 
 opentelemetry-instrumentation-flask 
-opentelemetry-instrumentation-requests #python http client
+#python http client
+opentelemetry-instrumentation-requests 
