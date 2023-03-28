@@ -5,5 +5,8 @@ opentelemetry-api
 opentelemetry-sdk 
 opentelemetry-exporter-otlp-proto-http 
 opentelemetry-instrumentation-flask 
-#python http client
+#python http client (a middleware)
 opentelemetry-instrumentation-requests 
+
+#install aws X-RAY sdk
+aws-xray-sdk
