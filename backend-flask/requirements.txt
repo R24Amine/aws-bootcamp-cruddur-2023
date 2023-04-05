@@ -8,5 +8,8 @@ opentelemetry-instrumentation-flask
 #python http client (a middleware)
 opentelemetry-instrumentation-requests 
 
-#install aws X-RAY sdk
+#AWS X-RAY SDK
 aws-xray-sdk
+
+#Adding watchtower
+watchtower

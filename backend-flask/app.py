@@ -28,6 +28,10 @@ from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProces
 from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 
+# Cloudwatch logs
+import watchtower
+import logging
+from time import strftime
 
 # Initialize tracing and an exporter that can send data to Honeycomb
 provider = TracerProvider()
