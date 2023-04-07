@@ -2,6 +2,8 @@ version: "3.8"
 services:
   backend-flask:
     environment:
+      # GITPOD_WORKSPACE_ID: The Universally Unique Identifier (UUID) associated with the workspace
+      # GITPOD_WORKSPACE_URL: The unique URL of the workspace
       FRONTEND_URL: "https://3000-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
       BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
       # OpenTelemetry 
