@@ -90,7 +90,7 @@ RequestsInstrumentor().instrument()
 ```
 
 Create Honeycomb environment
-![](./assets/week-02/1honeycombhomepage.png)
+![](../_docs/assets/week-02/1honeycombhomepage.png)
 
 #### Run queries to explore traces within Honeycomb.io
 Query new data and show on Honeycomb dashboard
@@ -160,9 +160,9 @@ class HomeActivities:
       span.set_attribute("app.result_length", len(results))
       return results
 ```
-![](./assets/week-02/2homeactivitiesbackendspan.png)
-![](./assets/week-02/3overalltraces.png)
-![](./assets/week-02/4historyoftraces.png)
+![](../_docs/assets/week-02/2homeactivitiesbackendspan.png)
+![](../_docs/assets/week-02/3overalltraces.png)
+![](../_docs/assets/week-02/4historyoftraces.png)
 
 From New query we can visualize : COUNT where : attribute value Groupeby: trace.trace_id, this will query over all the spans in honeycomb (we expect to have two spans as found before).
 
@@ -221,9 +221,9 @@ aws xray create-group \
    --filter-expression "service(\"backend-flask\")"
 ```
 
-![](./assets/week-02/AWSXRAYGroup.png)
+![](../_docs/assets/week-02/AWSXRAYGroup.png)
 
-![](./assets/week-02/AWSXRAYGroup1.png)
+![](../_docs/assets/week-02/AWSXRAYGroup1.png)
 
 
 ##### Create Sampling Rule 
@@ -231,11 +231,11 @@ aws xray create-group \
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 ```
 
-![](./assets/week-02/Samplingruleawsxray.png)
+![](../_docs/assets/week-02/Samplingruleawsxray.png)
 
 Sampling AWS console view
-![](./assets/week-02/Samplingruleawsxray2.png)
-![](./assets/week-02/xraygroups.png)
+![](../_docs/assets/week-02/Samplingruleawsxray2.png)
+![](../_docs/assets/week-02/xraygroups.png)
 
 
 #### Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API
@@ -272,12 +272,12 @@ services:
 
 #### Observe X-Ray traces within the AWS Console
 
-![](./assets/week-02/Xraytraceexample.png)
+![](../_docs/assets/week-02/Xraytraceexample.png)
 
-![](./assets/week-02/Xraytraceexample1.png)
+![](../_docs/assets/week-02/Xraytraceexample1.png)
 
-![](./assets/week-02/Xraytraceexample2.png)
+![](../_docs/assets/week-02/Xraytraceexample2.png)
 
-![](./assets/week-02/Xraytraceexample3.png)
+![](../_docs/assets/week-02/Xraytraceexample3.png)
 
 
