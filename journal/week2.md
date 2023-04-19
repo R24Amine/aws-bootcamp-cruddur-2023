@@ -280,4 +280,54 @@ services:
 
 ![](../_docs/assets/week-02/Xraytraceexample3.png)
 
+## WatchTower
+#### Install WatchTower and write a custom logger to send application log data to CloudWatch Log group
 
+Add `watchtower` package to `requirements.txt` 
+```sh
+# requirements.txt
+...
+watchtower 
+```
+
+Add dependencies to `app.py` 
+```python
+import watchtower 
+import logging 
+from time import strftime
+```
+
+Add watchtower instrumentation
+```python
+# CloudWatch 
+# Configuring Logger to Use CloudWatch
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("HomeActivities")
+LOGGER.info("test Log")
+
+
+app = Flask(__name__)
+
+@app.route("/api/activities/home", methods=['GET'])
+def data_home():
+  data = HomeActivities.run(logger=LOGGER) # use this when logging
+  return data, 200
+```
+
+
+
+Add logger to `home_activities.py`
+```python 
+class HomeActivities:
+  def run(logger):
+    logger.info("HomeActivities")
+    ...
+```
+![](../_docs/assets/week-02/Cloudwatchlogs1.png)
+![](../_docs/assets/week-02/Cloudwatchlogs2.png)
+![](../_docs/assets/week-02/Cloudwatchlogs3.png)
