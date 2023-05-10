@@ -13,3 +13,7 @@ aws-xray-sdk
 
 #Adding watchtower
 watchtower
+
+#Adding Rollbar
+blinker
+rollbar
