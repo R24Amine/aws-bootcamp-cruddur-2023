@@ -89,7 +89,7 @@ cors = CORS(
 #    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
 #    return response
 # Rollbar initialization------------------------------------------------------
-rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
+
 @app.before_first_request
 def init_rollbar():
     """init rollbar module"""
