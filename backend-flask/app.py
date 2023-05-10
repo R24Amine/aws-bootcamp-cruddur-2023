@@ -70,6 +70,24 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 
+
+######original code
+frontend = os.getenv('FRONTEND_URL')
+backend = os.getenv('BACKEND_URL')
+origins = [frontend, backend]
+cors = CORS(
+  app, 
+  resources={r"/api/*": {"origins": origins}},
+  expose_headers="location,link",
+  allow_headers="content-type,if-modified-since",
+  methods="OPTIONS,GET,HEAD,POST"
+)
+
+#@app.after_request
+#def after_request(response):
+#    timestamp = strftime('[%Y-%b-%d %H:%M]')
+#    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+#    return response
 # Rollbar initialization------------------------------------------------------
 rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
 @app.before_first_request
@@ -87,23 +105,6 @@ def init_rollbar():
 
     # send exceptions from `app` to rollbar, using flask's signal system.
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
-
-######original code
-frontend = os.getenv('FRONTEND_URL')
-backend = os.getenv('BACKEND_URL')
-origins = [frontend, backend]
-cors = CORS(
-  app, 
-  resources={r"/api/*": {"origins": origins}},
-  expose_headers="location,link",
-  allow_headers="content-type,if-modified-since",
-  methods="OPTIONS,GET,HEAD,POST"
-)
-#@app.after_request
-#def after_request(response):
-#    timestamp = strftime('[%Y-%b-%d %H:%M]')
-#    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
-#    return response
 
 # a simple endpoint just for testing 
 @app.route('/rollbar/test')
