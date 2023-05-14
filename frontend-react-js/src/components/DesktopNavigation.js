@@ -30,7 +30,7 @@ export default function DesktopNavigation(props) {
       handle="profile"
       active={props.active} />
   }
-
+  //if we are logged in we see this components
   return (
     <nav>
       <Logo className='logo' />
