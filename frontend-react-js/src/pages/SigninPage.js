@@ -13,7 +13,7 @@ export default function SigninPage() {
   const [errors, setErrors] = React.useState('');
 
   const onsubmit = async (event) => {
-    setCognitoErrors('')
+    setErrors('')
     event.preventDefault();
     try {
       Auth.signIn(email, password)
@@ -30,14 +30,6 @@ export default function SigninPage() {
     }
     return false
   }
-  
-  let errors;
-  if (cognitoErrors){
-    errors = <div className='errors'>{cognitoErrors}</div>;
-  }
-  
-  // just before submit component
-  {errors}
 
   const email_onchange = (event) => {
     setEmail(event.target.value);
