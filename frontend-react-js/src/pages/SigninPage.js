@@ -26,7 +26,7 @@ export default function SigninPage() {
       if (error.code == 'UserNotConfirmedException') {
         window.location.href = "/confirm"
       }
-      setCognitoErrors(error.message)
+      setErrors(error.message)
     }
     return false
   }
