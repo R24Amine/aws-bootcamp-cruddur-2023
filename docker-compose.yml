@@ -27,12 +27,12 @@ services:
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
-      # AWS Cognito integration 
+      # AWS Cognito integration in frontend
       REACT_APP_AWS_PROJECT_REGION: "${AWS_DEFAULT_REGION}"
       REACT_APP_AWS_COGNITO_REGION: "${AWS_DEFAULT_REGION}"
       REACT_APP_AWS_USER_POOLS_ID: "eu-west-3_T2jd0nBk0"
       REACT_APP_CLIENT_ID: "5mil97pofcobfgaot7uctaq3qd"
-
+     
     build: ./frontend-react-js
     ports:
       - "3000:3000"
