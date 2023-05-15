@@ -18,6 +18,10 @@ services:
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
       # Rollbar access token
       ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
+       # Cognito server side token validation env vars
+      AWS_COGNITO_USER_POOL_ID: "eu-west-3_T2jd0nBk0"
+      AWS_COGNITO_USER_POOL_CLIENT_ID: "5mil97pofcobfgaot7uctaq3qd"
+
     build: ./backend-flask
     ports:
       - "4567:4567"
