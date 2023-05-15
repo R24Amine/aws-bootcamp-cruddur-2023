@@ -6,6 +6,7 @@ import os
 # AWSCognito-----------------------------------------
 from flask_awscognito import AWSCognitoAuthentication
 
+from lib.cognito_token_verification import CognitoTokenVerification, extract_access_token, TokenVerifyError
 
 from services.home_activities import *
 from services.notifications_activities import *
