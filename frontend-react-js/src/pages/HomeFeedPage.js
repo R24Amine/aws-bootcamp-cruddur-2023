@@ -26,7 +26,7 @@ export default function HomeFeedPage() {
         //Add in the `HomeFeedPage.js` a header to pass along the access token
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`
-         }
+         },
         method: "GET"
       });
       let resJson = await res.json();
