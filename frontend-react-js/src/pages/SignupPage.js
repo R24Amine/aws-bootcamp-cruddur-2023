@@ -26,7 +26,7 @@ export default function SignupPage() {
             name: name,
             email: email,
             preferred_username: username,
-            //it will pass the attributes to cognito after signup confirmation
+            //it will pass the attributes to cognito after the signup 
           },
           autoSignIn: { // optional - enables auto sign in after user is confirmed
             enabled: true,
