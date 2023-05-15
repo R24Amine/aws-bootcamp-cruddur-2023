@@ -61,12 +61,6 @@ tracer = trace.get_tracer(__name__)
 #--------------------
 app = Flask(__name__)
 
-app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv('AWS_COGNITO_USER_POOL_ID')
-app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv('AWS_COGNITO_USER_POOL_CLIENT_ID')
-
-
-aws_auth = AWSCognitoAuthentication(app)
-
 # Initialize automatic instrumentation with Flask
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
@@ -160,17 +154,14 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
+#we can also add here a @xray_recorder-capture('activities_home') for xray subsegments
 def data_home():
   data = HomeActivities.run() # use this when you want logs in CloudWatch
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
-#we can also add here a xray_recorder-capture for xray subsegments
-@aws_auth.authentication_required
 def data_notifications():
   data = NotificationsActivities.run()
-  claims = aws_auth.claims
-  app.logger.debug(claims)
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
