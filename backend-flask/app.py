@@ -162,7 +162,7 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
-#we can also add here a @xray_recorder-capture('activities_home') for xray subsegments
+#we can also add here a @xray_recorder.capture('activities_home') for xray subsegments
 def data_home():
   data = HomeActivities.run() # use this when you want logs in CloudWatch
   return data, 200
