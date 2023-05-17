@@ -20,3 +20,7 @@ rollbar
 
 #Adding AWSCognito
 Flask-AWSCognito
+
+#Adding Postgres driver
+psycopg[binary]
+psycopg[pool]
