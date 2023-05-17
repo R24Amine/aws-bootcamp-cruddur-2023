@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 
+# we should always be in backend-flask dir to exec the schema_path
 schema_path="$(realpath .)/db/schema.sql"
 
 echo $schema_path
