@@ -6,4 +6,13 @@ schema_path="$(realpath .)/db/schema.sql"
 echo $schema_path
 
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production environement"
+  URL=$PROD_CONNECTION_URL
+else
+  echo "Running in development environement"
+  URL=$CONNECTION_URL
+fi
+
 psql $NO_DB_CONNECTION_URL cruddur < $schema_path
