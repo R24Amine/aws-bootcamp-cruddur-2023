@@ -5,7 +5,6 @@
 CYAN='\033[1;36m'
 NO_COLOR='\033[0m'
 LABEL="db-schema-load"
-
 printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 # we should always be in backend-flask dir to exec the schema_path
