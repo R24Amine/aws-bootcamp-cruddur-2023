@@ -22,3 +22,5 @@ CREATE TABLE public.activities (
   expires_at TIMESTAMP,
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
+
+-- we are putting public in front of it because in postgres you can create different namespaces and make it bey default public becasue when we are builidng microservices we have to make different domains for our app , for transition to microservices we can go to seperate databases per domain this is a good practice 
