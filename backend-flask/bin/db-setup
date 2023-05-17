@@ -1,5 +1,5 @@
 #! /usr/bin/bash
--e # stop if it fails at any point
+-e # stop if it fails at any point or step of the bash scripts
 
 #echo "==== db-setup"
 CYAN='\033[1;36m'
