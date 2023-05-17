@@ -1,5 +1,6 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- the order matters 
 DROP TABLE IF EXISTS public.users;
 DROP TABLE IF EXISTS public.activities;
 -- we will add users tables and activities tables 
