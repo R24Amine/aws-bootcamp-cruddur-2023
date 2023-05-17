@@ -1,4 +1,5 @@
 -- We create this file to initially ad values to the database 
+-- at some point this will be replaced 
 INSERT INTO public.users (display_name, handle, cognito_user_id)
 VALUES
   ('Amine Rayes', 'aminerayes' ,'MOCK'),
