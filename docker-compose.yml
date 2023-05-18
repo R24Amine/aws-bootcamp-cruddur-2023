@@ -22,7 +22,7 @@ services:
       AWS_COGNITO_USER_POOL_ID: "eu-west-3_T2jd0nBk0"
       AWS_COGNITO_USER_POOL_CLIENT_ID: "5mil97pofcobfgaot7uctaq3qd"
       # Database Connection URL 
-      CONNECTION_URL: "${CONNECTION_URL}"
+      CONNECTION_URL: "postgresql://postgres:password@db:5432/cruddur"
     build: ./backend-flask
     ports:
       - "4567:4567"
