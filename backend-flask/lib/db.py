@@ -1,6 +1,7 @@
 from psycopg_pool import ConnectionPool
 import os
 
+#we have to query home activities first from home_activities.py
 def query_wrap_object(template):
   sql = f"""
   (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
