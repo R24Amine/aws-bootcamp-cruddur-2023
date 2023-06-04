@@ -30,7 +30,7 @@ pipeline {
                 ansiblePlaybook extras: '--extra-vars "tag=${VERSION}" -vvvv', installation: 'ansible', inventory: 'inventory.yaml', playbook: 'ansible-playbook-fullstack.yaml'
             }
         }
-    
+    }
     post {
         always {
             script {
@@ -40,6 +40,5 @@ pipeline {
                           message: "Build <${env.BUILD_URL}|#${env.BUILD_NUMBER}> has finished with status *${status}*"
             }
         }
-}
 }
 }
