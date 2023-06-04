@@ -6,7 +6,7 @@ all:
 
       hosts:
 
-        15.237.27.59 # public Ip of K8S in AWS
+        172.31.18.74 # private Ip of K8S in AWS
 
   vars:
 
