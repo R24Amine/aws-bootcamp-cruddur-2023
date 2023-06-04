@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: frontend-react-js
+  name: frontend-react-js
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: frontend-react-js
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/aminebootcamp-default: "true"
+        io.kompose.service: frontend-react-js
+    spec:
+      containers:
+        - env:
+            - name: REACT_APP_AWS_COGNITO_REGION
+              value: ${AWS_DEFAULT_REGION}
+            - name: REACT_APP_AWS_PROJECT_REGION
+              value: ${AWS_DEFAULT_REGION}
+            - name: REACT_APP_AWS_USER_POOLS_ID
+              value: eu-west-3_T2jd0nBk0
+            - name: REACT_APP_BACKEND_URL
+              value: https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}
+            - name: REACT_APP_CLIENT_ID
+              value: 5mil97pofcobfgaot7uctaq3qd
+          image: medamine77/frontend-react-js:$TAG           # pull from dockerhub
+          name: frontend-react-js
+          ports:
+            - containerPort: 3000
+          resources: {}
+          volumeMounts:
+            - mountPath: /frontend-react-js
+              name: frontend-react-js-claim0
+      restartPolicy: Always
+      volumes:
+        - name: frontend-react-js-claim0
+          persistentVolumeClaim:
+            claimName: frontend-react-js-claim0
+status: {}

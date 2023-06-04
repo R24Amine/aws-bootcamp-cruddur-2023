@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: xray-daemon
+  name: xray-daemon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: xray-daemon
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/aminebootcamp-default: "true"
+        io.kompose.service: xray-daemon
+    spec:
+      containers:
+        - args:
+            - xray -o -b xray-daemon:2000
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              value: ${AWS_ACCESS_KEY_ID}
+            - name: AWS_REGION
+              value: eu-west-3
+            - name: AWS_SECRET_ACCESS_KEY
+              value: ${AWS_SECRET_ACCESS_KEY}
+          image: amazon/aws-xray-daemon
+          name: xray-daemon
+          ports:
+            - containerPort: 2000
+              protocol: UDP
+          resources: {}
+      restartPolicy: Always
+status: {}

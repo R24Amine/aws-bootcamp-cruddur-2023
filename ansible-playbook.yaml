@@ -5,12 +5,22 @@
   tasks:
     - name: copy deploy yaml file to k8s-master
       copy:
-        src: ./deploy-fullstack-in-k8s
+        src: ./kubernetes
         dest: /tmp/
     - name: run porject-fullstack pods and service
       shell:  |
           export TAG={{tag}}
-          envsubst < /tmp/deploy-fullstack-in-k8s/front.yaml | kubectl apply -f -
-          envsubst < /tmp/deploy-fullstack-in-k8s/back.yaml | kubectl apply -f -
-          kubectl apply -f /tmp/deploy-fullstack-in-k8s/mysql.yml
-          kubectl apply -f /tmp/deploy-fullstack-in-k8s/storage.yaml
+          envsubst < /tmp/kubernetes/frontend-react-js-deployment.yaml | kubectl apply -f -
+          envsubst < /tmp/kubernetes/backend-flask-deployment.yaml | kubectl apply -f -
+          kubectl apply -f /tmp/kubernetes/aminebootcamp-default-networkpolicy.yaml
+          kubectl apply -f /tmp/kubernetes/backend-flask-claim0-persistentvolumeclaim.yaml
+          kubectl apply -f /tmp/kubernetes/backend-flask-service.yaml
+          kubectl apply -f /tmp/kubernetes/db-deployment.yaml
+          kubectl apply -f /tmp/kubernetes/db-persistentvolumeclaim.yaml
+          kubectl apply -f /tmp/kubernetes/db-service.yaml
+          kubectl apply -f /tmp/kubernetes/frontend-react-js-claim0-persistentvolumeclaim.yaml
+          kubectl apply -f /tmp/kubernetes/frontend-react-js-service.yaml
+          kubectl apply -f /tmp/kubernetes/xray-daemon-deployment.yaml
+          kubectl apply -f /tmp/kubernetes/xray-daemon-service.yaml
+
+
