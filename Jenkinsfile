@@ -21,7 +21,7 @@ pipeline {
         
         stage('Deploy to Kubernetes with ansible') {
             steps {
-                ansiblePlaybook extras: '--extra-vars "tag=${VERSION}" -vvvv', installation: 'ansible', inventory: 'inventory.yaml', playbook: 'ansible-playbook.yaml'
+                ansiblePlaybook extras: '--extra-vars "tag=${VERSION}" ', installation: 'ansible', inventory: 'inventory.yaml', playbook: 'ansible-playbook.yaml'
             }
         }
     }
