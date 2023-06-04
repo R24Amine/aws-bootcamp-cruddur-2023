@@ -26,18 +26,7 @@ spec:
         io.kompose.service: frontend-react-js
     spec:
       containers:
-        - env:
-            - name: REACT_APP_AWS_COGNITO_REGION
-              value: ${AWS_DEFAULT_REGION}
-            - name: REACT_APP_AWS_PROJECT_REGION
-              value: ${AWS_DEFAULT_REGION}
-            - name: REACT_APP_AWS_USER_POOLS_ID
-              value: eu-west-3_T2jd0nBk0
-            - name: REACT_APP_BACKEND_URL
-              value: https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}
-            - name: REACT_APP_CLIENT_ID
-              value: 5mil97pofcobfgaot7uctaq3qd
-          image: medamine77/frontend-react-js:$TAG           # pull from dockerhub
+        - image: medamine77/frontend-react-js:$TAG           # pull from dockerhub
           name: frontend-react-js
           ports:
             - containerPort: 3000
