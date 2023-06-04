@@ -1,0 +1,15 @@
+all:
+
+  children:
+
+    k8s-master:
+
+      hosts:
+
+        172.31.4.219 # public Ip on K8S in AWS
+
+  vars:
+
+    ansible_ssh_private_key_file: ~/.ssh/id_rsa
+
+    ansible_user: ubuntu
