@@ -26,36 +26,7 @@ spec:
         io.kompose.service: backend-flask
     spec:
       containers:
-        - env:
-            - name: AWS_ACCESS_KEY_ID
-              value: ${AWS_ACCESS_KEY_ID}
-            - name: AWS_COGNITO_USER_POOL_CLIENT_ID
-              value: 5mil97pofcobfgaot7uctaq3qd
-            - name: AWS_COGNITO_USER_POOL_ID
-              value: eu-west-3_T2jd0nBk0
-            - name: AWS_DEFAULT_REGION
-              value: ${AWS_REGION}
-            - name: AWS_SECRET_ACCESS_KEY
-              value: ${AWS_SECRET_ACCESS_KEY}
-            - name: AWS_XRAY_DAEMON_ADDRESS
-              value: xray-daemon:2000
-            - name: AWS_XRAY_URL
-              value: '*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*'
-            - name: BACKEND_URL
-              value: https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}
-            - name: CONNECTION_URL
-              value: ${PROD_CONNECTION_URL}
-            - name: FRONTEND_URL
-              value: https://3000-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: https://api.honeycomb.io
-            - name: OTEL_EXPORTER_OTLP_HEADERS
-              value: x-honeycomb-team=${HONEYCOMB_API_KEY}
-            - name: OTEL_SERVICE_NAME
-              value: backend-flask
-            - name: ROLLBAR_ACCESS_TOKEN
-              value: ${ROLLBAR_ACCESS_TOKEN}
-          image: medamine77/backend-flask:$TAG          # pull from dockerhub
+        - image: medamine77/backend-flask:$TAG          # pull from dockerhub
           name: backend-flask
           ports:
             - containerPort: 4567
