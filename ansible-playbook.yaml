@@ -1,0 +1,16 @@
+---
+- name: deploy project-fullstack to k8s
+  hosts: k8s-master
+  become: true
+  tasks:
+    - name: copy deploy yaml file to k8s-master
+      copy:
+        src: ./deploy-fullstack-in-k8s
+        dest: /tmp/
+    - name: run porject-fullstack pods and service
+      shell:  |
+          export TAG={{tag}}
+          envsubst < /tmp/deploy-fullstack-in-k8s/front.yaml | kubectl apply -f -
+          envsubst < /tmp/deploy-fullstack-in-k8s/back.yaml | kubectl apply -f -
+          kubectl apply -f /tmp/deploy-fullstack-in-k8s/mysql.yml
+          kubectl apply -f /tmp/deploy-fullstack-in-k8s/storage.yaml
