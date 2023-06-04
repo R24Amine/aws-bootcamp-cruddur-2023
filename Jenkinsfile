@@ -5,12 +5,6 @@ pipeline {
     }
 
     stages {
-        stage ('Delete docker volumes'){
-          steps {
-              sh 'docker system prune -a --volumes -f'
-          }
-        }
-
         stage('Build docker image') {
             steps {
                 sh 'docker build -t medamine77/frontend-react-js:${VERSION} ./frontend-react-js/'
