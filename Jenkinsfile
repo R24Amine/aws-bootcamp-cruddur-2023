@@ -1,34 +1,35 @@
 pipeline {
     agent any
+    environment { 
+        VERSION = "${env.BUILD_ID}"
+    }
 
     stages {
-        stage('Clone git') {
+        stage ('Delete docker volumes'){
+          steps {
+              sh 'docker system prune -a --volumes -f'
+          }
+        }
+
+        stage('Build docker image') {
             steps {
-                git branch: 'main', url: 'https://github.com/R24Amine/aws-bootcamp-cruddur-2023'
-                
+                sh 'docker build -t medamine77/frontend-react-js:${VERSION} ./frontend-react-js/'
+                sh 'docker build -t medamine77/backend-flask:${VERSION} ./backend-flask/'
             }
         }
         
-        stage ('Delete docker volumes'){
-          steps  {
-            sh 'docker system prune -a --volumes -f'
-          }
-        }
-
-        stage ('npm package'){
-          steps  {
-            sh 'cd frontend-react-js'
-            sh 'npm i'
-          }
+        stage('Push image to dockerhub') {
+            steps {            
+                sh 'docker image push medamine77/frontend-react-js:${VERSION}'
+                sh 'docker image push medamine77/backend-flask:${VERSION}'
+            }
         }
         
-        stage('Start containers') {
-          steps {
-            sh 'docker-compose up -d'
-            sh 'docker-compose ps'
-          }
+        stage('Deploy to Kubernetes with ansible') {
+            steps {
+                ansiblePlaybook extras: '--extra-vars "tag=${VERSION}" -vvvv', installation: 'ansible', inventory: 'inventory.yaml', playbook: 'ansible-playbook-fullstack.yaml'
+            }
         }
-    }
     
     post {
         always {
